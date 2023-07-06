@@ -277,6 +277,7 @@ Puppet::Type.type(:jamf_account_group).provide(:api, parent: Puppet::Provider::J
         'Read Limited Access Settings',
         'Read Retention Policy',
         'Read Mobile Device Inventory Collection',
+        'Read Onboarding Configuration'
         'Read Password Policy',
         'Read Patch Management Settings',
         'Read PKI',
