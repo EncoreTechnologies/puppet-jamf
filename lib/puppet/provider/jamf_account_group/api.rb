@@ -157,7 +157,7 @@ Puppet::Type.type(:jamf_account_group).provide(:api, parent: Puppet::Provider::J
         'Read Advanced User Content Searches',
         'Read AirPlay Permissions',
         'Read Allowed File Extension',
-        'Read_API_Integrations',
+        'Read API Integrations',
         'Read API Roles',
         'Read Attachment Assignments',
         'Read Device Enrollment Program Instances',
