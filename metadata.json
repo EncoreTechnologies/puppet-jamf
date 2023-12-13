@@ -1,6 +1,6 @@
 {
   "name": "puppet-jamf",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "Encore Technologies",
   "summary": "Installs and configures jamf",
   "license": "Apache-2.0",
@@ -20,10 +20,8 @@
     }
   ],
   "requirements": [
-    {
-      "name": "puppet",
-      "version_requirement": ">= 6.0.0 < 8.0.0"
-    }
+    { "name": "puppet", "version_requirement": ">= 6.0.0 < 8.0.0" },
+    { "name": "ghoneycutt/facter", "version_requirement": ">= 4.0.0 < 5.0.0" }
   ],
   "pdk-version": "3.0.0",
   "template-url": "pdk-default#3.0.0",

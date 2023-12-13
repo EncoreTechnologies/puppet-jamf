@@ -11,6 +11,11 @@ class jamf::on_prem (
 
   Class['jamf::mysql'] -> Class['jamf::firewall'] -> Class['firewalld::reload'] -> Class['jamf::install'] -> Class['jamf::tomcat']
 
+  # Set fact for configured on prem server
+  facter::fact { 'is_jamf_configured':
+    value => true,
+  }
+
   # Clean up backups
   cron { 'Cleanup Jamf Backups':
     command => "find /usr/local/jss/backups/ -mindepth 2 -maxdepth 2 -mtime ${max_backup_age} | xargs rm -rf",
