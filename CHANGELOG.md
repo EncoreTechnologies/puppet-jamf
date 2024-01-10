@@ -2,8 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## Release 1.0.5
+## Release 1.0.6
 - Added an additional provider for Mobile Device Groups
+
+## Release 1.0.5
+- Adding custom fact to check if jamf is configured
 
 ## Release 1.0.4
 - Removed "Managed Preference Profiles" from Account Group permissions due to removal from the API
