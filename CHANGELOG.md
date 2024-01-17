@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 1.0.7
+- Disabling default mysql only for RHEL 8
+
 ## Release 1.0.6
 - Added an additional provider for Mobile Device Groups
 
