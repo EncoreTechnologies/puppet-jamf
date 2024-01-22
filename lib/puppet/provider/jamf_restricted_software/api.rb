@@ -21,7 +21,7 @@ Puppet::Type.type(:jamf_restricted_software).provide(:api, parent: Puppet::Provi
     software_list = body_json['restricted_software']
 
     # find the category that matches our name
-    matches = software_list.select { |ls| ls['name'] == resource[:name] }
+    matches = software_list.select { |ls| ls['name'] == restricted_software_name }
     if matches.size >= 1
       software_id = matches.first['id']
       resp = authorized_http_client.get(restricted_software_url + "/id/#{software_id}",
@@ -53,7 +53,7 @@ Puppet::Type.type(:jamf_restricted_software).provide(:api, parent: Puppet::Provi
     else
       instance = {
         ensure: :absent,
-        name: resource[:name],
+        name: restricted_software_name,
       }
     end
     instance
@@ -79,7 +79,7 @@ Puppet::Type.type(:jamf_restricted_software).provide(:api, parent: Puppet::Provi
       hash = {
         restricted_software: {
           general: {
-            name: resource[:name],
+            name: restricted_software_name,
             process_name: resource[:process_name],
             match_exact_process_name: resource[:match_exact_process_name],
             send_notification: resource[:send_notification],
