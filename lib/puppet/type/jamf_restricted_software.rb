@@ -503,6 +503,20 @@ Puppet::Type.newtype(:jamf_restricted_software) do
     defaultto false
   end
 
+  newparam(:restricted_software_name) do
+    desc 'Name of the Restricted Software for cloud servers.'
+
+    isrequired
+
+    defaultto ''
+
+    validate do |value|
+      unless value.is_a?(String)
+        raise ArgumentError, "restricted_software_name is expected to be a String, given: #{value.class.name}"
+      end
+    end
+  end
+
   newparam(:auth_token) do
     desc 'Token used for authentication to the API.'
 

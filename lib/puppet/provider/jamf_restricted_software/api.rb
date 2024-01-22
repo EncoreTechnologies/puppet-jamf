@@ -151,4 +151,12 @@ Puppet::Type.type(:jamf_restricted_software).provide(:api, parent: Puppet::Provi
     # create a URL based on our API URL
     @restricted_software_url ||= "#{resource[:api_url]}/JSSResource/restrictedsoftware"
   end
+
+  # NOTE: resource[:is_cloud] is defaulted to false and resource[:name] is the default
+  #       value for internal jamf servers. we must pass in the is_cloud attribute
+  #       with a value of true along with an restricted_software_name attribute for cloud
+  #       server management to operate correctly.
+  def restricted_software_name
+    resource[:is_cloud] ? resource[:restricted_software_name] : resource[:name]
+  end
 end
