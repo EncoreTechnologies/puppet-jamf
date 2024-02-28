@@ -1,6 +1,6 @@
 {
-  "name": "puppet-jamf",
-  "version": "1.0.8",
+  "name": "encore-jamf",
+  "version": "1.0.9",
   "author": "Encore Technologies",
   "summary": "Installs and configures jamf",
   "license": "Apache-2.0",
@@ -15,15 +15,22 @@
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
         "7",
-        "8"
+        "8",
+        "9"
       ]
     }
   ],
   "requirements": [
-    { "name": "puppet", "version_requirement": ">= 6.0.0 < 8.0.0" },
-    { "name": "ghoneycutt/facter", "version_requirement": ">= 4.0.0 < 5.0.0" }
+    {
+      "name": "puppet",
+      "version_requirement": ">= 6.0.0 < 8.0.0"
+    },
+    {
+      "name": "ghoneycutt/facter",
+      "version_requirement": ">= 3.0.0 < 5.0.0"
+    }
   ],
-  "pdk-version": "3.0.0",
-  "template-url": "pdk-default#3.0.0",
-  "template-ref": "tags/3.0.0-0-g056e50d"
+  "pdk-version": "3.0.1",
+  "template-url": "pdk-default#3.0.1",
+  "template-ref": "tags/3.0.1-0-gd13288a"
 }
