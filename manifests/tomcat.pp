@@ -11,10 +11,10 @@ class jamf::tomcat (
     path   => '/usr/local/jss/tomcat/bin/setenv.sh',
     line   => "export JAVA_OPTS=\"${java_opts}\"",
     match  => '^export JAVA_OPTS=',
-    notify => Service['jamf.tomcat8'],
+    notify => Service['jamf.tomcat'],
   }
 
-  service { 'jamf.tomcat8':
+  service { 'jamf.tomcat':
     ensure => running,
     enable => true,
   }
@@ -32,7 +32,7 @@ class jamf::tomcat (
     api_username    => $username,
     api_password    => $password,
     require         => Jamf_Conn_Validator['jamf'],
-    notify          => Service['jamf.tomcat8'],
+    notify          => Service['jamf.tomcat'],
   }
 
   jamf_conn_validator { 'wait_for_tomcat':
