@@ -108,6 +108,15 @@
 #   Unless this module is disabled, it masks
 #   packages provided by MySQL repositories. 
 #
+#   @note Used only for on-prem servers
+#
+# @param tomcat_service
+#   Starting with v11.3, the name of the Tomcat service
+#   running Jamf changes. Set this variable to the correct
+#   value in params.pp
+#
+#   @note Used only for on-prem servers
+#
 # @author
 #   Encore Technologies
 #
@@ -132,7 +141,8 @@ class jamf (
   String            $os_version                            = $facts['os']['release']['major'],
   String            $repo_base_url                         = 'https://repo.mysql.com/yum',
   String            $repo_gpgkey                           = 'https://repo.mysql.com/RPM-GPG-KEY-mysql-2022',
-  Boolean           $default_mysql_disable                 = $jamf::params::default_mysql_disable
+  Boolean           $default_mysql_disable                 = $jamf::params::default_mysql_disable,
+  String            $tomcat_service                        = $jamf::params::tomcat_service
 ) inherits jamf::params {
   unless $is_cloud {
     require jamf::on_prem

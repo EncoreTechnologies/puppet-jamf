@@ -2,8 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
-## Release 1.1.0
-- The name of Jamf's Tomcat service has changed. This release only supports Jamf 11.3+
+## Release 1.0.9
+- The name of Jamf's Tomcat service has changed. Set the value needed
+    for your environment in params.pp
 
 ## Release 1.0.8
 - Added ability for Restricted Software Records to be managed in Jamf Cloud
