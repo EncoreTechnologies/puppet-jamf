@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 1.0.9
+- The name of Jamf's Tomcat service has changed. Set the value needed
+    for your environment in params.pp
+- Removed "Customer Experience Metrics" from Account Group Permissions due to removal from the API
+- Removed extraneous "Read Push Certificates" permission from list
+
 ## Release 1.0.8
 - Added ability for Restricted Software Records to be managed in Jamf Cloud
 

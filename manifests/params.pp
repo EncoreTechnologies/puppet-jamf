@@ -3,6 +3,10 @@
 # @api private
 #
 class jamf::params {
+  # If you are running anything less than Jamf 11.3, this needs to be set to
+  # 'jamf.tomcat8'
+  $tomcat_service = 'jamf.tomcat'
+
   if $facts['os']['family'] == 'Redhat' {
     if versioncmp($facts['os']['release']['major'], '8') == 0 {
       $default_mysql_disable = true
