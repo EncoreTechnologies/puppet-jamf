@@ -21,7 +21,7 @@ Puppet::Type.type(:jamf_api_role).provide(:api, parent: Puppet::Provider::Jamf) 
     roles_list = body_json['results']
 
     # find the API role that matches our name
-    matches = roles_list.select { |ls| ls['name'] == role_name }
+    matches = roles_list.select { |ls| ls['displayName'] == role_name }
     if matches.size >= 1
       role_id = matches.first['id']
       resp = authorized_http_client.get(roles_url + "/#{role_id}",
