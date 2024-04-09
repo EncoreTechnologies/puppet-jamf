@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 1.0.1
+- Added a provider/type for API Roles.
+
 ## Release 1.0.9
 - The name of Jamf's Tomcat service has changed. Set the value needed
     for your environment in params.pp
