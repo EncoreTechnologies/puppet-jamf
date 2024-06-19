@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 1.0.11
+- Added additional permissions for Jamf 11.5 Release
+    - Read Remote Assist
+    - Read Login Disclaimers
+
 ## Release 1.0.10
 - Added a provider/type for API Roles.
 
