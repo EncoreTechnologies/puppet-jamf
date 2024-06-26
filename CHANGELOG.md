@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 1.0.12
+- Removed "Casper Admin Privileges" from Account + Account Group permissions due to removal from the API
+
 ## Release 1.0.11
 - Added additional permissions for Jamf 11.5 Release
     - Read Remote Assist

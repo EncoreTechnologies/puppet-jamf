@@ -38,7 +38,6 @@ Puppet::Type.type(:jamf_account_group).provide(:api, parent: Puppet::Provider::J
         jss_object_privileges: group['privileges']['jss_objects'],
         jss_settings_privileges: group['privileges']['jss_settings'],
         jss_actions_privileges: group['privileges']['jss_actions'],
-        casper_admin_privileges: group['privileges']['casper_admin'],
       }
 
       # We need to update the resource value because we are assigning defaults
@@ -88,9 +87,6 @@ Puppet::Type.type(:jamf_account_group).provide(:api, parent: Puppet::Provider::J
             },
             jss_actions: {
               privilege: resource[:jss_actions_privileges],
-            },
-            casper_admin: {
-              privilege: resource[:casper_admin_privileges],
             },
           },
         },

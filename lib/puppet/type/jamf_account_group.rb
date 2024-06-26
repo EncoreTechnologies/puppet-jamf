@@ -174,40 +174,6 @@ Puppet::Type.newtype(:jamf_account_group) do
     end
   end
 
-  newproperty(:casper_admin_privileges, array_matching: :all) do
-    desc 'An array of Casper Admin Privileges for the account.'
-
-    defaultto []
-
-    validate do |value|
-      # NOTE: Puppet automatically detects if the value is an array and calls this validate()
-      #       on each item/value within the array
-      unless value.is_a?(String)
-        raise ArgumentError, "Casper Admin Privileges are expected to be a String, given: #{value.class.name}"
-      end
-    end
-
-    def sort_array(a)
-      if a.nil?
-        []
-      else
-        a.sort
-      end
-    end
-
-    def should
-      sort_array(super)
-    end
-
-    def should=(values)
-      super(sort_array(values))
-    end
-
-    def insync?(is)
-      sort_array(is) == should
-    end
-  end
-
   # the following are parameters because they determine how we manage the resource
   # and can not be 'measured' or returned from the target system
   newparam(:api_url) do

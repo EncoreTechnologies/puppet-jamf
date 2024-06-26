@@ -50,7 +50,6 @@ Puppet::Type.type(:jamf_account).provide(:api, parent: Puppet::Provider::Jamf) d
         jss_object_privileges: account['privileges']['jss_objects'],
         jss_settings_privileges: account['privileges']['jss_settings'],
         jss_actions_privileges: account['privileges']['jss_actions'],
-        casper_admin_privileges: account['privileges']['casper_admin'],
       }
     else
       instance = {
@@ -99,9 +98,6 @@ Puppet::Type.type(:jamf_account).provide(:api, parent: Puppet::Provider::Jamf) d
             },
             jss_actions: {
               privilege: resource[:jss_actions_privileges],
-            },
-            casper_admin: {
-              privilege: resource[:casper_admin_privileges],
             },
           },
         },
