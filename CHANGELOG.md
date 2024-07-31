@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 1.0.13
+- Added Puppet Fact to check the version of Jamf installed on-prem and adjust the Tomcat Service
+    name dynamically.
+
 ## Release 1.0.12
 - Removed "Casper Admin Privileges" from Account + Account Group permissions due to removal from the API
 
