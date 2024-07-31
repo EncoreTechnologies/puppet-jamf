@@ -1,6 +1,6 @@
 {
   "name": "puppet-jamf",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "author": "Encore Technologies",
   "summary": "Installs and configures jamf",
   "license": "Apache-2.0",
