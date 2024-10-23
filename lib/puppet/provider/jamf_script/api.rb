@@ -27,6 +27,7 @@ Puppet::Type.type(:jamf_script).provide(:api, parent: Puppet::Provider::Jamf) do
       resp = authorized_http_client.get(script_url + "/id/#{script_id}",
                                         headers: { 'Accept' => 'application/json' })
       script = JSON.parse(resp.body)['script']
+      script_contents = script['script_contents']
       instance = {
         ensure: :present,
         # note, we need the ID here so we know below to add or update
@@ -37,7 +38,10 @@ Puppet::Type.type(:jamf_script).provide(:api, parent: Puppet::Provider::Jamf) do
         notes: script['notes'],
         priority: script['priority'],
         os_requirements: script['os_requirements'],
-        script: script['script_contents'],
+        # if the script is a good string, add a trailing newline to the end
+        # so we can write trailing newlines in our files
+        # and maintain idempotency.
+        script: script_contents ? script_contents + "\n" : script_contents,
       }
       params = [:parameter4, :parameter5, :parameter6, :parameter7, :parameter8, :parameter9,
                 :parameter10, :parameter11]
