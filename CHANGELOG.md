@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 1.0.14
+- Updated metadata.json to reflect required modules.
+- Updated PDK version to 3.3.0
+
 ## Release 1.0.13
 - Added Puppet Fact to check the version of Jamf installed on-prem and adjust the Tomcat Service
     name dynamically.
