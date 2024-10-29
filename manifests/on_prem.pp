@@ -13,7 +13,7 @@ class jamf::on_prem (
 
   # Set fact for configured on prem server
   facter::fact { 'is_jamf_configured':
-    value => true,
+    value => 'true',
   }
 
   # Clean up backups
