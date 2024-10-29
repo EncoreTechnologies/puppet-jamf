@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 1.0.16
+- Updated boolean fact for on prem servers to a string for compatability with new puppet standards
+
 ## Release 1.0.15
 - Updated Script and Computer Extension attribute providers to allow for newlines at the end of
     script templates in order to not fight most text editors desire to add them.
