@@ -27,6 +27,7 @@ Puppet::Type.type(:jamf_computer_extension_attribute).provide(:api, parent: Pupp
       resp = authorized_http_client.get(computer_ea_url + "/id/#{ea_id}",
                                         headers: { 'Accept' => 'application/json' })
       ea = JSON.parse(resp.body)['computer_extension_attribute']
+      ea_script = ea['input_type']['script']
       instance = {
         ensure: :present,
         # note, we need the ID here so we know below to add or update
@@ -37,7 +38,10 @@ Puppet::Type.type(:jamf_computer_extension_attribute).provide(:api, parent: Pupp
         data_type: ea['data_type'],
         ea_type: ea['input_type']['type'],
         platform: ea['input_type']['platform'],
-        script: ea['input_type']['script'],
+        # if the script is a good string, add a trailing newline to the end
+        # so we can write trailing newlines in our files
+        # and maintain idempotency.
+        script: ea_script ? ea_script + "\n" : ea_script,
         inventory_display: ea['inventory_display'],
       }
     else
