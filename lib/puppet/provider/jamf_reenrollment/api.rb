@@ -24,6 +24,7 @@ Puppet::Type.type(:jamf_reenrollment).provide(:api, parent: Puppet::Provider::Ja
       flush_location_information_history: data['isFlushLocationInformationHistoryEnabled'],
       flush_policy_logs: data['isFlushPolicyHistoryEnabled'],
       flush_extension_attributes: data['isFlushExtensionAttributesEnabled'],
+      flush_software_update_plans: data['isFlushSoftwareUpdatePlansEnabled'],
       flush_mdm_queue: data['flushMDMQueue'],
     }
   end
@@ -43,6 +44,7 @@ Puppet::Type.type(:jamf_reenrollment).provide(:api, parent: Puppet::Provider::Ja
       isFlushLocationInformationHistoryEnabled: resource[:flush_location_information_history],
       isFlushPolicyHistoryEnabled: resource[:flush_policy_logs],
       isFlushExtensionAttributesEnabled: resource[:flush_extension_attributes],
+      isFlushSoftwareUpdatePlansEnabled: resource["flush_software_update_plans"],
       flushMDMQueue: resource[:flush_mdm_queue],
     }
     body = hash.to_json

@@ -49,6 +49,14 @@ Puppet::Type.newtype(:jamf_reenrollment) do
     defaultto true
   end
 
+  newproperty(:flush_software_update_plans, boolean: true, parent: Puppet::Property::Boolean) do
+    desc 'Clears all values for software update plans from computer and mobile device inventory information during re-enrollment'
+
+    isrequired
+
+    defaultto true
+  end
+
   newproperty(:flush_mdm_queue) do
     desc 'Clears computer and mobile device information from the Management History category on the History tab in inventory information during re-enrollment'
 

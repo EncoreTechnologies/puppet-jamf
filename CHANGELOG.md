@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 1.0.17
+- Added ability to control flushing Software Update Plans upon re-enrollment.
+
 ## Release 1.0.16
 - Updated boolean fact for on prem servers to a string for compatability with new puppet standards
 
