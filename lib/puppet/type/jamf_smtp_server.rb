@@ -59,7 +59,7 @@ Puppet::Type.newtype(:jamf_smtp_server) do
 
     munge do |value|
       if @resource[:enabled] == false
-        25
+        @resource[:port]
       else
         value
       end
@@ -76,6 +76,14 @@ Puppet::Type.newtype(:jamf_smtp_server) do
         raise ArgumentError, "Timeout is expected to be an Integer, given: #{value.class.name}"
       end
     end
+
+    munge do |value|
+      if @resource[:enabled] == false
+        @resource[:timeout]
+      else
+        value
+      end
+    end
   end
 
   newproperty(:authorization_required, boolean: true, parent: Puppet::Property::Boolean) do
@@ -83,11 +91,19 @@ Puppet::Type.newtype(:jamf_smtp_server) do
 
     defaultto false
 
-    munge do |value|
+    def should
       if @resource[:enabled] == false
         false
       else
-        value
+        super()
+      end
+    end
+  
+    def insync?(is)
+      if @resource[:enabled] == false
+        is == false
+      else
+        super(is)
       end
     end
   end
