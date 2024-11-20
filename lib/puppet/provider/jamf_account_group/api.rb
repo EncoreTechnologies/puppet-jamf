@@ -184,7 +184,7 @@ Puppet::Type.type(:jamf_account_group).provide(:api, parent: Puppet::Provider::J
         'Read Inventory Preload Records',
         'Read VPP Invitations',
         'Read Jamf Connect Deployments',
-        'Read Jamf Content Distribution Server Files',
+        'Read Jamf Cloud Distribution Service Files',
         'Read Jamf Protect Deployments',
         'Read Accounts',
         'Read JSON Web Token Configuration',

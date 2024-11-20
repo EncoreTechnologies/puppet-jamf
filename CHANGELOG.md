@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 1.0.19
+- Updates to permissions for JCDS files
+
 ## Release 1.0.18
 - Some minor changes to account for default values when the SMTP server is disabled
 
