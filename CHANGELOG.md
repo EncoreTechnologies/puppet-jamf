@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 1.0.18
+- Some minor changes to account for default values when the SMTP server is disabled
+
 ## Release 1.0.17
 - Added ability to control flushing Software Update Plans upon re-enrollment.
 
