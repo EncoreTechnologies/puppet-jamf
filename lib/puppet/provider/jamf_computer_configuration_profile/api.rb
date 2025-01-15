@@ -33,6 +33,7 @@ Puppet::Type.type(:jamf_computer_configuration_profile).provide(:api, parent: Pu
         ensure: :present,
         # note, we need the ID here so we know below to add or update
         id: config_profile_params['id'],
+        uuid: config_profile_params['uuid'],
         name: config_profile_params['name'],
         category: config_profile_params['category']['name'],
         description: config_profile_params['description'],
@@ -174,6 +175,10 @@ Puppet::Type.type(:jamf_computer_configuration_profile).provide(:api, parent: Pu
           },
         },
       }
+      # Attach UUID to template payloads for PUT requests only
+      unless cached_instance[:id].nil?
+        hash[:os_x_configuration_profile][:general][:payloads][:uuid] = cached_instance[:uuid]
+      end
       body = hash_to_xml(hash)
       if cached_instance[:id].nil?
         # target ID 0 when creating new instances and it will auto-create our ID
