@@ -1,5 +1,6 @@
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'jamf'))
 require 'puppet/x/http_helper'
+require 'rexml/document'
 
 Puppet::Type.type(:jamf_computer_configuration_profile).provide(:api, parent: Puppet::Provider::Jamf) do
   # lots of methods inherited from Puppet::Provider::Jamf
@@ -177,7 +178,27 @@ Puppet::Type.type(:jamf_computer_configuration_profile).provide(:api, parent: Pu
       }
       # Attach UUID to template payloads for PUT requests only
       unless cached_instance[:id].nil?
-        hash[:os_x_configuration_profile][:general][:payloads][:uuid] = cached_instance[:uuid]
+        # Parse the XML
+        parsed_payload = REXML::Document.new(hash[:os_x_configuration_profile][:general][:payloads])
+
+        # Locate and update the PayloadUUID key
+        parsed_payload.elements.each('//dict') do |dict|
+          keys = dict.elements.to_a('key')
+          strings = dict.elements.to_a('string')
+
+          keys.each_with_index do |key, index|
+            if key.text == 'PayloadUUID'
+              strings[index].text = cached_instance[:uuid]
+            end
+          end
+        end
+
+        # Convert back to a string
+        updated_xml = ''
+        formatter = REXML::Formatters::Pretty.new
+        formatter.compact = true
+        formatter.write(parsed_payload, updated_xml)
+        hash[:os_x_configuration_profile][:general][:payloads] = updated_xml
       end
       body = hash_to_xml(hash)
       if cached_instance[:id].nil?
