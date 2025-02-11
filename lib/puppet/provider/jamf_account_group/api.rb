@@ -148,6 +148,7 @@ Puppet::Type.type(:jamf_account_group).provide(:api, parent: Puppet::Provider::J
   def jss_object_privilege_array
     if resource[:jss_object_read_all]
       read_jss_objects = [
+        'Read AD CS Settings',
         'Read Advanced Computer Searches',
         'Read Advanced Mobile Device Searches',
         'Read Advanced User Searches',
@@ -243,6 +244,7 @@ Puppet::Type.type(:jamf_account_group).provide(:api, parent: Puppet::Provider::J
     if resource[:jss_setting_read_all]
       read_jss_settings = [
         'Read Activation Code',
+        'Read AD CS Certificate Jobs',
         'Read Apache Tomcat Settings',
         'Read Apple Configurator Enrollment',
         'Read Education Settings',
@@ -282,6 +284,7 @@ Puppet::Type.type(:jamf_account_group).provide(:api, parent: Puppet::Provider::J
         'Read Self Service',
         'Read App Request Settings',
         'Read Mobile Device Self Service',
+        'Read Self Service Plus',
         'Read SMTP Server',
         'Read SSO Settings',
         'Read User-Initiated Enrollment',
