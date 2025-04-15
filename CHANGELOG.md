@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 1.0.21
+- Updates to permissions for DigiCert settings and Blueprints
+
 ## Release 1.0.20
 - Updates to permissions for AD CS and Self Service Plus
 
