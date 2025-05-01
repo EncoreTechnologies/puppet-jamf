@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 1.0.22
+- Fixed typo in DigiCert settings permission
+
 ## Release 1.0.21
 - Updates to permissions for DigiCert settings and Blueprints
 

@@ -160,7 +160,7 @@ Puppet::Type.type(:jamf_account_group).provide(:api, parent: Puppet::Provider::J
         'Read Attachment Assignments',
         'Read Device Enrollment Program Instances',
         'blueprints read',
-        'DigiCert Settings',
+        'Read DigiCert Settings',
         'Read Buildings',
         'Read Categories',
         'Read Classes',
