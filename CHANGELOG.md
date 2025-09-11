@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 1.0.23
+- Fixed jamf_account_group provider to handle account groups without LDAP server configuration
+
 ## Release 1.0.22
 - Fixed typo in DigiCert settings permission
 
