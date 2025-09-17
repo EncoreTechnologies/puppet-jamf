@@ -34,7 +34,7 @@ Puppet::Type.type(:jamf_account_group).provide(:api, parent: Puppet::Provider::J
         name: group['name'],
         access_level: group['access_level'],
         privilege_set: group['privilege_set'],
-        ldap_server: group['ldap_server']['name'],
+        ldap_server: group['ldap_server'] ? group['ldap_server']['name'] : '',
         jss_object_privileges: group['privileges']['jss_objects'],
         jss_settings_privileges: group['privileges']['jss_settings'],
         jss_actions_privileges: group['privileges']['jss_actions'],
@@ -75,9 +75,6 @@ Puppet::Type.type(:jamf_account_group).provide(:api, parent: Puppet::Provider::J
           name: group_name,
           access_level: resource[:access_level],
           privilege_set: resource[:privilege_set],
-          ldap_server: {
-            id: ldap_server_id(resource[:ldap_server]),
-          },
           privileges: {
             jss_objects: {
               privilege: jss_object_privilege_array,
@@ -91,6 +88,12 @@ Puppet::Type.type(:jamf_account_group).provide(:api, parent: Puppet::Provider::J
           },
         },
       }
+      
+      # Only add ldap_server if one is specified
+      if resource[:ldap_server] && !resource[:ldap_server].empty?
+        ldap_id = ldap_server_id(resource[:ldap_server])
+        hash[:group][:ldap_server] = { id: ldap_id } if ldap_id
+      end
       body = hash_to_xml(hash)
       if cached_instance[:id].nil?
         # target ID 0 when creating new instances and it will auto-create our ID
